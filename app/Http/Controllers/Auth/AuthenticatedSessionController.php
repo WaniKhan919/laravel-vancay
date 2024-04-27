@@ -25,11 +25,23 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
 
-        $request->session()->regenerate();
+        if($request->email == "admin@laraveljobs-app.com"){
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+                $request->authenticate();
+
+                $request->session()->regenerate();
+
+                return redirect()->intended('admin/dashboard');
+
+        }else{
+            $request->authenticate();
+
+            $request->session()->regenerate();
+
+            return redirect()->intended('/');
+        }
+
     }
 
     /**
