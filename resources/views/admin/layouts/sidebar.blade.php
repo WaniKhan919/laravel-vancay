@@ -50,6 +50,20 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ url('admin/jobs') }}" class="nav-link  @if(Request::segment(2) == 'jobs') active @endif">
+                        <i class="nav-icon fa fa-home"></i>
+                        <p>Jobs</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ url('admin/comments') }}" class="nav-link  @if(Request::segment(2) == 'comments') active @endif">
+                        <i class="nav-icon fa fa-home"></i>
+                        <p>Comments</p>
+                    </a>
+                </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

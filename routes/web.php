@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\FrontendController;
@@ -30,6 +32,8 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('/admin')->group(function(){
     Route::get('/dashboard',[DashboardController::class,'index']);
+    Route::get('/jobs' , [JobController::class , 'index']);
+    Route::get('/comments', [CommentController::class , 'index']);
 })->middleware('auth');
 
 
