@@ -19,8 +19,6 @@
 
                 <div class="row">
                     <section class="col-lg-12">
-
-
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Comment List </h3>
@@ -42,7 +40,14 @@
                                                 <td>{{ !empty($comment->user->name) ? $comment->user->name  : '' }}</td>
                                                 <td>{{ $comment->comment ?? '' }}</td>
                                                 <td style="max-width:500px">{{ !empty($comment->job->title) ? $comment->job->title : '' }}</td>
+                                                <td>
+                                                    @if(auth()->user()->role == 1)
+                                                    <a href="{{ url('comment/delete',$comment->id) }}" class="btn btn-danger"
+                                                        onclick="return confirm('Are you sure you want to delete?')">Delete</a>
+                                                    @endif
+                                                </td>
                                             </tr>
+
                                            @empty
                                            <tr>
                                             <td colspan="100%">No Record Found....</td>

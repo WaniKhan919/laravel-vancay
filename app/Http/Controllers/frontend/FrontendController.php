@@ -13,7 +13,8 @@ class FrontendController extends Controller
         return view('frontend.index',compact('data'));
     }
 
-    public function job_details(){
-        return  view('frontend.job_details');
+    public function job_details($id){
+        $data = Job::with('comments', 'user')->find($id);
+        return  view('frontend.job_details' , compact('data'));
     }
 }
