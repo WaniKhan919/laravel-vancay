@@ -26,5 +26,11 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password1234'),
             'role' => 0
         ]);
+
+        \App\Models\User::factory()
+        ->count(8)
+        ->hasJobs(1)
+        ->create();
+
     }
 }
