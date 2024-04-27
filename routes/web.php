@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\FrontendController;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +37,11 @@ Route::prefix('/admin')->group(function(){
     Route::get('/jobs' , [JobController::class , 'index']);
     Route::get('/comments', [CommentController::class , 'index']);
 })->middleware('auth');
+Route::prefix('/vacancies')->name('user.vacancies.')->group(function(){
+    Route::get('/',[UserController::class,'index'])->name('index');
+    Route::get('/add',[UserController::class,'create'])->name('create');
+    Route::post('/store',[UserController::class,'store'])->name('store');
+});
 
 
 require __DIR__.'/auth.php';

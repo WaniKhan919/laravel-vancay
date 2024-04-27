@@ -6,6 +6,7 @@
           </div>
           <nav id="nav-menu-container">
             <ul class="nav-menu">
+              <li class="menu-active"><a href="/vacancies">Vacancies</a></li>
               <li><a class="ticker-btn" href="{{ route('register') }}">Signup</a></li>
               <li><a class="ticker-btn" href="{{ route('login') }}">Login</a></li>
             </ul>
