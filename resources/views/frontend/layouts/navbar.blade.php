@@ -9,6 +9,11 @@
               <li><a href="/all-vacancies">Vacancies</a></li>
               @if(auth()->user() && auth()->user()->role == 0)
                 <li><a href="/vacancies">My Jobs</a></li>
+              @endif
+              @if(auth()->user() && auth()->user()->role == 1)
+                <li><a href="/vacancies">Dashboard</a></li>
+              @endif
+              @if(auth()->user())
                 <li>
                   <form method="POST" action="{{ route('logout') }}">
                     @csrf
