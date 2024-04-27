@@ -20,6 +20,11 @@
                 <div class="single-feature">
                     <a href="{{ route('user.vacancies.create') }}">Add Vacancy</a>
                 </div>
+                @if(session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -28,29 +33,58 @@
 <section class="post-area section-gap">
     <div class="container">
         <div class="row justify-content-center d-flex">
-            <div class="col-lg-6 post-list">
-                <div class="single-post d-flex flex-row">
-                    <div class="details">
-                        <div class="title d-flex flex-row justify-content-between">
-                            <div class="titles">
-                                <h4>Creative Art Designer</h4>
-                                <h6>Premium Labels Limited</h6>
+            @foreach ($data as $job)    
+                <div class="col-lg-6 post-list">
+                    <div class="single-post d-flex flex-row">
+                        <div class="details">
+                            <div class="title d-flex flex-row justify-content-between">
+                                <div class="titles">
+                                    <h4>{{ $job->title ?? '' }}</h4>
+                                    <h6>
+                                        @if($job->category_id == 1)
+                                            Junior Laravel Developer
+                                        @elseif($job->category_id == 2)
+                                            Intermidiate Laravel Developer
+                                        @elseif($job->category_id == 3)
+                                            Experienced Laravel Developer
+                                        @endif
+                                    </h6>
+                                </div>
+                                
+                                <ul class="btns">
+                                    <li><a type="button" data-toggle="modal" data-target="#exampleModal_{{ $job->id }}"><span class="lnr lnr-trash"></span></a></li>
+                                    <li><a href="{{ route('user.vacancies.edit',$job->id) }}">Edit</a></li>
+                                </ul>
                             </div>
-                            
-                            <ul class="btns">
-                                <li><a href="#"><span class="lnr lnr-trash"></span></a></li>
-                                <li><a href="#">Edit</a></li>
-                            </ul>
+                            <p>
+                               {{ $job->sub_title ?? '' }}
+                            </p>
+                            <p>
+                               {{ $job->description ?? '' }}
+                            </p>
                         </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-                        </p>
-                        <h5>Job Nature: Full time</h5>
-                        <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                        <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
                     </div>
                 </div>
-            </div>
+                <div class="modal fade" id="exampleModal_{{ $job->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Delete vacancy!</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Are you sure to delete this?</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <a class="btn btn-danger" href="{{ route('user.vacancies.destory',$job->id) }}">Yes</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            @endforeach
         </div>
     </div>
 </section>

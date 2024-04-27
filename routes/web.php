@@ -41,6 +41,9 @@ Route::prefix('/vacancies')->name('user.vacancies.')->group(function(){
     Route::get('/',[UserController::class,'index'])->name('index');
     Route::get('/add',[UserController::class,'create'])->name('create');
     Route::post('/store',[UserController::class,'store'])->name('store');
+    Route::get('/edit/{id}',[UserController::class,'edit'])->name('edit');
+    Route::post('/update/{id}',[UserController::class,'update'])->name('update');
+    Route::get('/destory/{id}',[UserController::class,'destory'])->name('destory');
 });
 
 

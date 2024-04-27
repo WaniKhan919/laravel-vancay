@@ -52,52 +52,39 @@
 <section class="post-area section-gap">
     <div class="container">
         <div class="row justify-content-center d-flex">
-            <div class="col-lg-6 post-list">
-                <a href="{{ route('job.details') }}">
-                    <div class="single-post d-flex flex-row">
-                        <div class="details">
-                            <div class="title d-flex flex-row justify-content-between">
-                                <div class="titles">
-                                    <h4>Creative Art Designer</h4>
-                                    <h6>Premium Labels Limited</h6>
+            @foreach ($data as $job)
+                <div class="col-lg-6 post-list">
+                    <a href="{{ route('job.details') }}">
+                        <div class="single-post d-flex flex-row">
+                            <div class="details">
+                                <div class="title d-flex flex-row justify-content-between">
+                                    <div class="titles">
+                                        <h4>{{ $job->title ?? '' }}</h4>
+                                        <h6>
+                                            @if($job->category_id == 1)
+                                                Junior Laravel Developer
+                                            @elseif($job->category_id == 2)
+                                                Intermidiate Laravel Developer
+                                            @elseif($job->category_id == 3)
+                                                Experienced Laravel Developer
+                                            @endif
+                                        </h6>
+                                    </div>
                                 </div>
+                                <p>
+                                    {{ $job->sub_title ?? '' }}
+                                 </p>
+                                 <p>
+                                    {{ $job->description ?? '' }}
+                                 </p>
                             </div>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-                            </p>
-                            <h5>Job Nature: Full time</h5>
-                            <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                            <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
                         </div>
-                    </div>
-                </a>
+                    </a>
 
-                <a class="text-uppercase loadmore-btn mx-auto d-block" href="#">Load More job Posts</a>
+                    <a class="text-uppercase loadmore-btn mx-auto d-block" href="#">More Jobs</a>
 
-            </div>
-            <div class="col-lg-6 post-list">
-                <a href="{{ route('job.details') }}">
-                    <div class="single-post d-flex flex-row">
-                        <div class="details">
-                            <div class="title d-flex flex-row justify-content-between">
-                                <div class="titles">
-                                    <h4>Creative Art Designer</h4>
-                                    <h6>Premium Labels Limited</h6>
-                                </div>
-                            </div>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-                            </p>
-                            <h5>Job Nature: Full time</h5>
-                            <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                            <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-                        </div>
-                    </div>
-                </a>
-
-                <a class="text-uppercase loadmore-btn mx-auto d-block" href="#">Load More job Posts</a>
-
-            </div>
+                </div>    
+            @endforeach
         </div>
     </div>
 </section>
