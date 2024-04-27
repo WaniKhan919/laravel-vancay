@@ -54,7 +54,7 @@
         <div class="row justify-content-center d-flex">
             @foreach ($data as $job)
                 <div class="col-lg-6 post-list">
-                    <a href="{{ route('job.details') }}">
+                    <a href="{{ route('job.details', $job->id) }}">
                         <div class="single-post d-flex flex-row">
                             <div class="details">
                                 <div class="title d-flex flex-row justify-content-between">
@@ -83,7 +83,7 @@
 
                     <a class="text-uppercase loadmore-btn mx-auto d-block" href="#">More Jobs</a>
 
-                </div>    
+                </div>
             @endforeach
         </div>
     </div>

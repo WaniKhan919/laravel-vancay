@@ -36,7 +36,7 @@ class UserController extends Controller
         }
     }
     public function edit($id){
-        
+
         $data = Job::find($id);
         return view('frontend.vancacies.edit',compact('data'));
     }

@@ -20,7 +20,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
-Route::get('/job/details' , [FrontendController::class, 'job_details'])->name('job.details');
+Route::get('/job/details/{id}' , [FrontendController::class, 'job_details'])->name('job.details');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -30,6 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::post('/add/comment' , [CommentController::class, 'add_comment'])->name('add.comment');
+    Route::get('/comment/delete/{id}' , [CommentController::class, 'delete_comment']);
 });
 
 Route::prefix('/admin')->group(function(){
@@ -37,6 +39,8 @@ Route::prefix('/admin')->group(function(){
     Route::get('/jobs' , [JobController::class , 'index']);
     Route::get('/comments', [CommentController::class , 'index']);
 })->middleware('auth');
+
+
 Route::prefix('/vacancies')->name('user.vacancies.')->group(function(){
     Route::get('/',[UserController::class,'index'])->name('index');
     Route::get('/add',[UserController::class,'create'])->name('create');
