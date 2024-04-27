@@ -6,8 +6,9 @@
           </div>
           <nav id="nav-menu-container">
             <ul class="nav-menu">
+              <li><a href="/all-vacancies">vacancies</a></li>
               @if(auth()->user() && auth()->user()->role == 0)
-                <li class="menu-active"><a href="/vacancies">Vacancies</a></li>
+                <li><a href="/vacancies">My Jobs</a></li>
                 <li>
                   <form method="POST" action="{{ route('logout') }}">
                     @csrf
