@@ -11,7 +11,7 @@
                 <li><a href="/vacancies">My Jobs</a></li>
               @endif
               @if(auth()->user() && auth()->user()->role == 1)
-                <li><a href="/vacancies">Dashboard</a></li>
+                <li><a href="/admin/dashboard">Dashboard</a></li>
               @endif
               @if(auth()->user())
                 <li>

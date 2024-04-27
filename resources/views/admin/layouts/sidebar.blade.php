@@ -58,7 +58,7 @@
                 </li> --}}
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/jobs') }}" class="nav-link  @if(Request::segment(2) == 'jobs') active @endif">
+                    <a href="{{ url('admin/jobs') }}" class="nav-link  @if(Request::segment(2) == 'jobs' || Request::segment(2) == 'dashboard') active @endif">
                         <i class="nav-icon fa fa-copy"></i>
                         <p>Jobs</p>
                     </a>
