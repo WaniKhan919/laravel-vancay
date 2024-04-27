@@ -17,8 +17,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="single-feature">
-                    <a href="{{ route('user.vacancies.create') }}">Add Vacancy</a>
+                <div class="single-feature border">
+                    <a href="{{ route('user.vacancies.create') }}" class="font-bold font-weight-bold">Add Vacancy</a>
                 </div>
                 @if(session()->has('success'))
                     <div class="alert alert-success">
@@ -29,6 +29,7 @@
         </div>
     </div>
 </section>
+<hr>
 <!-- Start post Area -->
 <section class="post-area section-gap">
     <div class="container">

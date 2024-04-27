@@ -1,24 +1,18 @@
 @extends('frontend.layouts.app')
 @section('content')
-<!-- start banner Area -->
 <section class="banner-area relative" id="home">
     <div class="overlay overlay-bg"></div>
     <div class="container">
-        <div class="row fullscreen d-flex align-items-center justify-content-center">
-            <div class="banner-content col-lg-12">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
                 <h1 class="text-white">
-                    <span>1500+</span> Jobs posted last week
+                    All Jobs
                 </h1>
             </div>
         </div>
     </div>
 </section>
-<!-- End banner Area -->
-<section class="mt-5 mb-5">
-    <div class="container d-flex align-items-center justify-content-center test-center">
-        <h4 class="text-capitalize">Laravel Vacancies</h4>
-    </div>
-</section>
+
 <!-- Start post Area -->
 <section class="post-area section-gap">
     <div class="container">
@@ -45,17 +39,14 @@
                                 <p class="text-secondary">
                                     {{ $job->sub_title ?? '' }}
                                  </p>
-                                 <p class="text-secondary">
+                                <p class="text-secondary">
                                     {{ $job->description ?? '' }}
                                  </p>
                             </div>
                         </div>
                     </a>
-
                 </div>
             @endforeach
-
-            <a class="text-uppercase loadmore-btn mx-auto d-block font-weight-bold mb-5" href="{{ url('/all-vacancies') }}">More Jobs</a>
         </div>
     </div>
 </section>

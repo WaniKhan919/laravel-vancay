@@ -17,4 +17,8 @@ class FrontendController extends Controller
         $data = Job::with('comments', 'user')->find($id);
         return  view('frontend.job_details' , compact('data'));
     }
+    public function all_vacancies(){
+        $data = Job::with('comments', 'user')->orderBy('id','desc')->get();
+        return  view('frontend.all_vacancies' , compact('data'));
+    }
 }

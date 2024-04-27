@@ -20,6 +20,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::get('all-vacancies' , [FrontendController::class, 'all_vacancies']);
 Route::get('/job/details/{id}' , [FrontendController::class, 'job_details'])->name('job.details');
 
 Route::get('/dashboard', function () {
@@ -35,7 +36,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::prefix('/admin')->group(function(){
-    Route::get('/dashboard',[DashboardController::class,'index']);
+    // Route::get('/dashboard',[DashboardController::class,'index']);
+    Route::get('/dashboard' , [JobController::class , 'index']);
     Route::get('/jobs' , [JobController::class , 'index']);
     Route::get('/comments', [CommentController::class , 'index']);
 })->middleware('auth');

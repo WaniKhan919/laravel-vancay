@@ -6,7 +6,7 @@
           </div>
           <nav id="nav-menu-container">
             <ul class="nav-menu">
-              <li><a href="/all-vacancies">vacancies</a></li>
+              <li><a href="/all-vacancies">Vacancies</a></li>
               @if(auth()->user() && auth()->user()->role == 0)
                 <li><a href="/vacancies">My Jobs</a></li>
                 <li>
